@@ -12,6 +12,6 @@ python3 -c "import cv2; print(cv2.__version__)"
 
 
 //Installing Adafruit Library for servo control
-//This code is taken fron 
+//This code is taken fron https://learn.adafruit.com/adafruit-16-channel-servo-driver-with-raspberry-pi/using-the-adafruit-library
 
 sudo pip3 install adafruit-circuitpython-servokit
