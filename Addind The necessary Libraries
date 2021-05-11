@@ -1,1 +1,17 @@
+//Installing OpenCV Python module from the Raspbian Repositories
 
+sudo apt update
+sudo apt install python3-opencv    
+
+//Run the following command to check if installed correctly
+
+python3 -c "import cv2; print(cv2.__version__)"
+
+//At the output you will se you opencv version
+
+
+
+//Installing Adafruit Library for servo control
+//This code is taken fron 
+
+sudo pip3 install adafruit-circuitpython-servokit
