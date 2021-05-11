@@ -1,3 +1,6 @@
+//This will check you I2C connevtivity
+//This code is taken from https://learn.adafruit.com/adafruit-16-channel-servo-driver-with-raspberry-pi/configuring-your-pi-for-i2c
+
 sudo apt-get install python-smbus
 sudo apt-get install i2c-tools
 sudo i2cdetect -y 1
