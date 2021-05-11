@@ -1,1 +1,57 @@
+import cv2
+cam = cv2.VideoCapture(0) # if camera windo is not showing then try changing the value of VideoCapture() to 1 or 2 or 3
+from adafruit_servokit import ServoKit
+from tkinter import *
+i=0
+j=180
+while True:
+  _, img = cam.read()
+  cv2.imshow('Camera Feed',img)
+  kit = ServoKit(channels=16)
+  def moving(event):
+      kit.servo[0].angle =event.x
+      kit.servo[4].angle =event.y
+      #print(str(event.x))
 
+
+  def upward(event):
+      global i
+      i=i+1
+      if i<180:
+          if i>=0:
+              kit.servo[8].angle =i
+              print(i)
+
+
+  def downward(event):
+      global i
+      i=i-1
+      if i>=0:
+          kit.servo[8].angle =i
+          print(i)
+
+  def quit_window(event):
+      window.destroy()
+
+  def gripper_close(event):
+      global j
+      kit.servo[12].angle =j
+      print("gripper=",j)
+      j=j-1
+
+  def gripper_open(event):
+      global j
+      kit.servo[12].angle =j
+      print("gripper=",j)
+      j=j+1
+  window=Tk()
+  window.geometry("180x180")
+  window.bind("<Motion>",moving)
+  window.bind("<Up>",upward)
+  window.bind("<Down>",downward)
+  window.bind("<Escape>",quit_window)
+  window.bind("<Right>",gripper_close)
+  window.bind("<Left>",gripper_open)
+  window.mainloop()
+  cv2.waitKey(0)
+  cv2.destroyAllWindows()
